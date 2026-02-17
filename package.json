@@ -1,0 +1,20 @@
+{
+  "name": "voltorb-flip-ts",
+  "version": "1.0.0",
+  "description": "voltorb flip game - ts",
+  "main": "voltorbflip.html",
+  "scripts": {
+    "start": "parcel voltorbflip.html",
+    "build": "parcel build voltorbflip.html"
+  },
+  "dependencies": {
+    "parcel-bundler": "1.6.1"
+  },
+  "devDependencies": {
+    "typescript": "4.4.4"
+  },
+  "resolutions": {
+    "@babel/preset-env": "7.13.8"
+  },
+  "keywords": ["typescript", "javascript"]
+}
