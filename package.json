@@ -4,8 +4,8 @@
   "description": "voltorb flip game - ts",
   "main": "voltorbflip.html",
   "scripts": {
-    "start": "parcel voltorbflip.html",
-    "build": "parcel build voltorbflip.html"
+    "start": "parcel src/voltorbflip.html",
+    "build": "parcel build src/voltorbflip.html"
   },
   "dependencies": {
     "parcel-bundler": "1.6.1"
