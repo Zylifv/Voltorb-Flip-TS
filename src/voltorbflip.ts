@@ -402,17 +402,17 @@ for (let i: number = 0; i < boxes.length; i++) {
   });
 }
 
-function information() {
+gameInfoButton.addEventListener("click", () => {
   if (gameInfo.style.display === "none") {
     gameInfo.style.display = "block";
-    gameInfo.innerText = "Click again to hide.";
+    gameInfoButton.innerText = "Click again to hide.";
     sigDiv.style.display = "none";
   } else {
     gameInfo.style.display = "none";
     gameInfoButton.innerText = "Click for game info!";
     sigDiv.style.display = "block";
   }
-}
+});
 
 startBtn.addEventListener("click", () => {
   startGame();
