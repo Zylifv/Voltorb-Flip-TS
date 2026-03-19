@@ -150,8 +150,9 @@ body {
 
 .box:hover {
   transform: scale(1.02);
-  border: 3px solid #f7d02c;
-  animation: wobble 1.5s infinite;
+  /*border: 3px solid #f7d02c;
+  animation: wobble 1.5s infinite;*/
+  filter: saturate(150%);
 }
 
 .boom {
