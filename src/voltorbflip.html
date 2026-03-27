@@ -2,20 +2,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="voltorbflip.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
   <title>Voltorb Flip</title>
   </head>
   <body>
     <div id="wrapper">
       <a id="sig">- By R McGregor</a>
-      <button id="info">Click for game info!</button>
-      <div id="gameInfo">The goal of the game is to find all of the 1, 2 and 3 tiles without flipping over any Voltorb tiles (bombs). If you succeed in doing this you move on to the next level and keep the points you have earned, but if you uncover just one bomb you lose all of your current points, as well as half your total points. You also risk going down one or more levels. Good luck!</div>
+      <button id="info" onclick="information()">Click for game info!</button>
+      <div id="gameInfo">The goal of the game is to find all of the 1, 2 and 3 tiles without flipping over any Voltorb tiles (bombs). If you succeed in doing this you move on to the next level and keep the points you have earned, but if you uncover just one bomb you lose all of your current points, as well as half your total points. You also risk going down one or more levels. Lastly, the numbers do NOT indicate adjacent bomb locations, they are merely points. Good luck!</div>
     <div class="stats">
       <div class="levelInfo" id="level">Level: <p id="levelInfo"></p></div>
         <div class ="TotalCoins">Total coins: <p id="totalCoins"></p></div>
           <div class ="CoinsCollected">Coins collected this level: <p id="currentCoins"></p></div>
-            <button id="start">Click to start</button>
-              <button id="nextLevel">Next Level!</button>
+            <button id="start" onclick="startGame()">Click to start</button>
+              <button id="nextLevel" onclick="startGame()">Next Level!</button>
+              <button id="makeNotes" onclick="makeNotes()">Make Notes</button>
     </div>
       
       <div class="grid" id="grid">
@@ -26,11 +27,10 @@
         <button class="box"></button>
         <button class="box"></button>
         <button class="box"></button>
-            
           <div id="info1">
             <div id="maxScore1"></div>
               <div id="line1"></div>
-                <img src="voltorb-image.png" alt="voltorb sprite" id="row1Voltorb" height="40px"</img>
+                <img src="https://img.itch.zone/aW1nLzEyOTA5NTUxLnBuZw==/315x250%23c/yslQia.png" alt="voltorb sprite" id="row1Voltorb" height="40px"</img>
                   <div id="voltorb1"></div>
     </div>
   </div>
@@ -42,13 +42,12 @@
             <button class="box"></button>
             <button class="box"></button>
             <button class="box"></button>
-             
               <div id="info2">
                 <div id="maxScore2">
                </div>
                   <div id="line2"></div>
-                    <img src="voltorb-image.png" id="row2Voltorb" height="40px"</img>
-                        <div id="voltorb2">
+                    <img src="https://img.itch.zone/aW1nLzEyOTA5NTUxLnBuZw==/315x250%23c/yslQia.png" alt="voltorb sprite" id="row2Voltorb" height="40px"</img>
+    <div id="voltorb2">
     </div>
   </div>
 </div>
@@ -60,11 +59,10 @@
         <button class="box"></button>
         <button class="box"></button>
         <button class="box"></button>
-          
           <div id="info3">
             <div id="maxScore3"></div>
               <div id="line3"></div>
-                <img src="voltorb-image.png" id="row3Voltorb" height="40px"</img>
+                <img src="https://img.itch.zone/aW1nLzEyOTA5NTUxLnBuZw==/315x250%23c/yslQia.png" id="row3Voltorb" alt="voltorb sprite" height="40px"</img>
                   <div id="voltorb3"></div>
     </div>
 </div>
@@ -76,11 +74,10 @@
           <button class="box"></button>
           <button class="box"></button>
           <button class="box"></button>
-            
             <div id="info4">
               <div id="maxScore4"></div>
                 <div id="line4"></div>
-                  <img src="voltorb-image.png" id="row4Voltorb" height="40px"</img>
+                  <img src="https://img.itch.zone/aW1nLzEyOTA5NTUxLnBuZw==/315x250%23c/yslQia.png" id="row4Voltorb" alt="voltorb sprite" height="40px"</img>
                     <div id="voltorb4"></div>
     </div>
 </div>
@@ -92,11 +89,10 @@
          <button class="box"></button>
          <button class="box"></button>
          <button class="box"></button>
-          
           <div id="info5">
             <div id="maxScore5"></div>
               <div id="line5"></div>
-                <img src="voltorb-image.png" id="row5Voltorb" height="40px"</img>
+                <img src="https://img.itch.zone/aW1nLzEyOTA5NTUxLnBuZw==/315x250%23c/yslQia.png" id="row5Voltorb" alt="voltorb sprite" height="40px"</img>
                   <div id="voltorb5"></div>
     </div>
 </div>
@@ -106,40 +102,54 @@
          <div id="info6">
            <div id="maxScore6"></div>
              <div id="line6"></div>
-              <img src="voltorb-image.png" id="column1Voltorb" height="40px"</img>
+              <img src="https://img.itch.zone/aW1nLzEyOTA5NTUxLnBuZw==/315x250%23c/yslQia.png" id="column1Voltorb" alt="voltorb sprite" height="40px"</img>
                 <div id="voltorb6">
      </div>
   </div>
     <div id="info7">
       <div id="maxScore7"></div>
         <div id="line7"></div>
-          <img src="voltorb-image.png" id="column2Voltorb" height="40px"</img>
+          <img src="https://img.itch.zone/aW1nLzEyOTA5NTUxLnBuZw==/315x250%23c/yslQia.png" id="column2Voltorb" alt="voltorb sprite" height="40px"</img>
             <div id="voltorb7">
      </div>
   </div>
     <div id="info8">
       <div id="maxScore8"></div>
          <div id="line8"></div>
-            <img src="voltorb-image.png" id="column3Voltorb" height="40px"</img>
+            <img src="https://img.itch.zone/aW1nLzEyOTA5NTUxLnBuZw==/315x250%23c/yslQia.png" id="column3Voltorb" alt="voltorb sprite" height="40px"</img>
               <div id="voltorb8">
     </div>
   </div>
     <div id="info9">
       <div id="maxScore9"></div>
         <div id="line9"></div>
-          <img src="voltorb-image.png" id="column4Voltorb" height="40px"</img>
+          <img src="https://img.itch.zone/aW1nLzEyOTA5NTUxLnBuZw==/315x250%23c/yslQia.png" id="column4Voltorb" alt="voltorb sprite" height="40px"</img>
             <div id="voltorb9">
    </div>
 </div>
    <div id="info10">
      <div id="maxScore10"></div>
         <div id="line10"></div>
-          <img src="voltorb-image.png" id="column5Voltorb" height="40px"</img>
+          <img src="https://img.itch.zone/aW1nLzEyOTA5NTUxLnBuZw==/315x250%23c/yslQia.png" id="column5Voltorb" alt="voltorb sprite" height="40px"</img>
             <div id="voltorb10"> 
         </div>
       </div>
+        <div id="notes-box-outer" class="notes-box" style="visibility:hidden;">
+        <div id="score-1-note"
+               class="corner-notes"
+               type="number"><img src="https://www.svgrepo.com/show/535521/number-1-alt.svg" width="15px" /></div>
+        <div id="score-2-note"
+               class="corner-notes"
+               type="number"><img src="https://www.svgrepo.com/show/535522/number-2-alt.svg" width="15px" /></div>
+        <div id="score-3-note"
+               class="corner-notes"
+               type="number"><img src="https://www.svgrepo.com/show/535523/number-3-alt.svg" width="15px" /></div>
+        <div id="bomb-note"
+               class="corner-notes"
+               type="number"><img src="https://www.svgrepo.com/show/535222/bomb.svg" width="18px" /></div>
+      </div>
     </div>
-      <script src="voltorbflip.ts"></script>
+      <script src="script.js"></script>
     </div>
   </body>
 </html>
