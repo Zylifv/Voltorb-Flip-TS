@@ -1,6 +1,6 @@
 @media only screen and (max-width: 767px) {
   body {
-    transform: scale(0.6);
+    transform: scale(0.60);
     margin: 0 auto;
     padding: 0;
   }
@@ -69,10 +69,10 @@ body {
   height: 70px;
   z-index: 100;
   position: absolute;
-  top: 41.8%;
-  left: 43.7%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
+      top: 41.8%;
+      left: 43.7%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%);
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -87,15 +87,10 @@ body {
   font-size: 2em;
   font-weight: bolder;
   color: #f4f4f4;
-  animation: 0.6s slide-up;
+  animation: 0.6s slide-up; 
 }
 
-#row-1,
-#row-2,
-#row-3,
-#row-4,
-#row-5,
-#row-6 {
+#row-1, #row-2, #row-3, #row-4, #row-5, #row-6 {
   display: grid;
   justify-content: center;
   grid-template-columns: 110px 110px 110px 110px 110px 110px;
@@ -125,32 +120,22 @@ body {
   line-height: 87px;
   color: white;
   text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+  z-index: 5;
 }
 
 @keyframes wobble {
-  0% {
-    transform: translate(1px, 1px) rotate(0deg);
-  }
-  20% {
-    transform: translate(-1px, -2px) rotate(-1deg);
-  }
-  40% {
-    transform: translate(1px, -1px) rotate(1deg);
-  }
-  60% {
-    transform: translate(-1px, 2px) rotate(-1deg);
-  }
-  80% {
-    transform: translate(1px, -2px) rotate(1deg);
-  }
-  100% {
-    transform: translate(1px, 1px) rotate(-1deg);
-  }
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  20% { transform: translate(-1px, -2px) rotate(-1deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  60% { transform: translate(-1px, 2px) rotate(-1deg); }
+  80% { transform: translate(1px, -2px) rotate(1deg); }
+  100% { transform: translate(1px, 1px) rotate(0deg); }
 }
+
 
 .box:hover {
   transform: scale(1.02);
-  /*border: 3px solid #f7d02c;
+  /*border: 3px solid #F7D02C;
   animation: wobble 1.5s infinite;*/
   filter: saturate(150%);
 }
@@ -213,8 +198,7 @@ body {
   justify-content: center;
 }
 
-#info1,
-#info6 {
+#info1, #info6 {
   width: 87px;
   height: 87px;
   padding: 3px;
@@ -233,8 +217,7 @@ body {
   padding-top: 30px;
 }
 
-#info2,
-#info7 {
+#info2, #info7 {
   width: 87px;
   height: 87px;
   padding: 3px;
@@ -249,8 +232,7 @@ body {
   z-index: 10;
 }
 
-#info3,
-#info8 {
+#info3, #info8 {
   width: 87px;
   height: 87px;
   padding: 3px;
@@ -264,8 +246,7 @@ body {
   z-index: 10;
 }
 
-#info4,
-#info9 {
+#info4, #info9 {
   width: 87px;
   height: 87px;
   padding: 3px;
@@ -279,8 +260,7 @@ body {
   z-index: 10;
 }
 
-#info5,
-#info10 {
+#info5, #info10 {
   width: 87px;
   height: 87px;
   padding: 3px;
@@ -299,12 +279,34 @@ body {
   width: 660px;
 }
 
-.levelInfo,
-.TotalCoins,
-.CoinsCollected,
-#levelInfo,
-#totalCoins,
-#currentCoins {
+.notes-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 3px solid #FFDE00;
+  border-radius: 8px;
+  background-color: none;
+  width: 93px;
+  height: 93px;
+  z-index: 10;
+}
+
+.corner-notes {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  color: white;
+  border-radius: 8px;
+  opacity: 0.5;
+}
+
+.notes-box > div:hover {
+  border: 2px solid #FFDE00;
+  opacity: 1;
+}
+
+.levelInfo, .TotalCoins, .CoinsCollected, #levelInfo, #totalCoins, #currentCoins {
   margin-bottom: 3%;
   margin-top: 3%;
   display: inline-block;
@@ -322,8 +324,7 @@ body {
   padding-left: 4px;
 }
 
-#levelInfo,
-#totalCoins {
+#levelInfo, #totalCoins {
   max-height: 26px;
   margin-bottom: 2px;
   margin-right: 7px;
@@ -339,8 +340,7 @@ body {
   margin-right: 7px;
 }
 
-#start,
-#nextLevel {
+#start, #nextLevel, #makeNotes {
   margin-bottom: 3%;
   margin-top: 3%;
   display: inline-block;
@@ -352,7 +352,7 @@ body {
   line-height: 20px;
   horizontal-align: center;
   font-weight: 200;
-  font-family: tahoma;
+  font-family: Tahoma, Arial;
 }
 
 #redLine {
@@ -466,11 +466,7 @@ body {
   display: inline-block;
 }
 
-#line1,
-#line2,
-#line3,
-#line4,
-#line5 {
+#line1, #line2, #line3, #line4, #line5 {
   position: absolute;
   left: 73.2%;
   width: 9.9%;
@@ -575,16 +571,7 @@ body {
   color: white;
 }
 
-#row1Voltorb,
-#row2Voltorb,
-#row3Voltorb,
-#row4Voltorb,
-#row5Voltorb,
-#column1Voltorb,
-#column2Voltorb,
-#column3Voltorb,
-#column4Voltorb,
-#column5Voltorb {
+#row1Voltorb, #row2Voltorb, #row3Voltorb, #row4Voltorb, #row5Voltorb, #column1Voltorb, #column2Voltorb, #column3Voltorb, #column4Voltorb, #column5Voltorb {
   margin: auto;
   position: relative;
   right: 25%;
@@ -614,6 +601,7 @@ body {
   font-weight: bold;
   color: white;
 }
+
 
 #voltorb8 {
   display: block;
