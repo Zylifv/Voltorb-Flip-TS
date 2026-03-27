@@ -414,6 +414,10 @@ gameInfoButton.addEventListener("click", () => {
   }
 });
 
+function makeNotes() {
+  return notesBoxOuter.style.visibility == "hidden" ? notesBoxOuter.style.visibility = "visible" : notesBoxOuter.style.visibility = "hidden";
+}
+
 startBtn.addEventListener("click", () => {
   startGame();
 });
