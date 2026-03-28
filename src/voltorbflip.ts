@@ -12,7 +12,7 @@ let nextLevelBtn = document.getElementById("nextLevel") as HTMLButtonElement;
 let levelTracker : number = 0;
 let currentBoxesWithoutBombs : number = 0;
 const winOrLose = document.getElementById("winOrLose") as HTMLDivElement;
-const notesBoxes = document.getElementsByClassName("notes-box") as any;
+const notesBoxOuter = document.getElementById("notes-box-outer") as HTMLDivElement;
 
 
 gameInfo.style.display = "none";
@@ -20,6 +20,24 @@ nextLevelBtn.disabled = true;
 makeNotesBtn.disabled = true;
 winOrLose.style.display = "none";
 boxes.forEach((el : any) => el.disabled = true);
+
+
+//creates img elements and assigns the necessary classNames etc ready for use
+let scoreOneNoteImg = document.createElement("img");
+      scoreOneNoteImg.src = "https://www.svgrepo.com/show/535521/number-1-alt.svg"
+      scoreOneNoteImg.classList.add("notes-img");
+let scoreTwoNoteImg = document.createElement("img");
+      scoreTwoNoteImg.src = "https://www.svgrepo.com/show/535522/number-2-alt.svg"
+      scoreTwoNoteImg.classList.add("notes-img");
+let scoreThreeNoteImg = document.createElement("img");
+      scoreThreeNoteImg.src = "https://www.svgrepo.com/show/535523/number-3-alt.svg"
+      scoreThreeNoteImg.classList.add("notes-img");
+let scoreBombNoteImg = document.createElement("img");
+      scoreBombNoteImg.src = "https://www.svgrepo.com/show/535222/bomb.svg"
+      scoreBombNoteImg.classList.add("notes-img-bomb", "notes-img");
+
+
+const notesBoxOuterImgs = document.getElementsByClassName("notes-img") as any;
 
 
 function startGame() {
@@ -77,46 +95,11 @@ function startGame() {
   let box24 = document.getElementById("24") as any;
   let box25 = document.getElementById("25") as any;
 
+  //assigns each box on the grid with the four imgs that are used to make notes
+      boxes.forEach((box) => box.append(scoreOneNoteImg.cloneNode(true), scoreTwoNoteImg.cloneNode(true), scoreThreeNoteImg.cloneNode(true), scoreBombNoteImg.cloneNode(true)))
   
-  //--------------------------------------
- 
-  let notesBoxOuter = document.createElement("div");
-      notesBoxOuter.classList.add("notes-box");
-      notesBoxOuter.setAttribute("id", "notes-box-outer");
-  let scoreOneNote = document.createElement("div");
-      scoreOneNote.setAttribute("id", "score-1-note");
-      scoreOneNote.classList.add("corner-notes");
-  let scoreOneNoteImg = document.createElement("img");
-      scoreOneNoteImg.src = "https://www.svgrepo.com/show/535521/number-1-alt.svg"
-      scoreOneNoteImg.classList.add("notes-img");
-  let scoreTwoNote = document.createElement("div");
-      scoreTwoNote.setAttribute("id", "score-2-note");
-      scoreTwoNote.classList.add("corner-notes");
-  let scoreTwoNoteImg = document.createElement("img");
-      scoreTwoNoteImg.src = "https://www.svgrepo.com/show/535522/number-2-alt.svg"
-      scoreTwoNoteImg.classList.add("notes-img");
-  let scoreThreeNote = document.createElement("div");
-      scoreThreeNote.setAttribute("id", "score-3-note");
-      scoreThreeNote.classList.add("corner-notes");
-  let scoreThreeNoteImg = document.createElement("img");
-      scoreThreeNoteImg.src = "https://www.svgrepo.com/show/535523/number-3-alt.svg"
-      scoreThreeNoteImg.classList.add("notes-img");
-  let scoreBombNote = document.createElement("div");
-      scoreBombNote.setAttribute("id", "bomb-note");
-      scoreBombNote.classList.add("corner-notes");
-  let scoreBombNoteImg = document.createElement("img");
-      scoreBombNoteImg.src = "https://www.svgrepo.com/show/535222/bomb.svg"
-      scoreBombNoteImg.classList.add("notes-img-bomb", "notes-img");
-      
-      scoreOneNote.appendChild(scoreOneNoteImg);
-      scoreTwoNote.appendChild(scoreTwoNoteImg);
-      scoreThreeNote.appendChild(scoreThreeNoteImg);
-      scoreBombNote.appendChild(scoreBombNoteImg);
-      
-      notesBoxOuter.append(scoreOneNote, scoreTwoNote, scoreThreeNote, scoreBombNote);
-      notesBoxOuter.style.visibility = "hidden";
-      
-      boxes.forEach((box) => box.appendChild(notesBoxOuter.cloneNode(true)))
+  //hides the newly issued imgs until ready
+  for (const img of notesBoxOuterImgs) {img.style.visibility = "hidden"};
 
   //Assigning the max available scores for each row and column below so the player can see where and how to avoid Voltorb booms
   //Rows
@@ -368,25 +351,38 @@ boxes[i].addEventListener("click", () => {
 }
 
 function makeNotes() {
-    for (const notes of notesBoxes) {
-      if (notes.style.visibility == "visible")
-      {
-        notes.style.visibility = "hidden";
-        boxes.forEach((box) => {box.disabled = false;})
-      }
-      else if (notes.style.visibility == "hidden")
-      {
-        notes.style.visibility = "visible";
-        boxes.forEach((box) => {box.disabled = true;})
-      }
-   }
+  console.log("CLICK")
+
+  for (const img of notesBoxOuterImgs) {
+      img.addEventListener("click", () => {
+      img.style.opacity == "1" ? img.style.opacity = "0.3" : img.style.opacity = "1";
+    })
+  }
+  
+  if (notesBoxOuter.style.visibility == "hidden")
+  {
+    notesBoxOuter.style.visibility = "visible";
+    boxes.forEach((box) => {box.disabled = true;})
+    for (const img of notesBoxOuterImgs) {img.style.visibility = "visible"}
+  }
+  else if (notesBoxOuter.style.visibility == "visible")
+  {
+    notesBoxOuter.style.visibility = "hidden";
+    boxes.forEach((box) => {box.disabled = false;})
+    for (const img of notesBoxOuterImgs) {
+      img.style.opacity < 1 ? img.style.visibility = "hidden" : img.style.visibility = "visible";
+    }
+  }
 }
+
+notesBoxOuter.addEventListener("click", () => {alert("Click the symbol you wish to mark on a desired box to keep track of possible points or Voltorbs!")})
+
 
 function information() {
   if (gameInfo.style.display === "none")
   {
     gameInfo.style.display = "block";
-    gameInfo.innerText = "Click again to hide."
+    gameInfoButton.innerText = "Click again to hide.";
     sigDiv.style.display = "none";
   }
   else
