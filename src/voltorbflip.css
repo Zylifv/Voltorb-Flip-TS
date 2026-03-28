@@ -285,8 +285,8 @@ body {
   border: 3px solid #FFDE00;
   border-radius: 8px;
   background-color: none;
-  width: 93px;
-  height: 93px;
+  width: 83px;
+  height: 83px;
   z-index: 10;
 }
 
@@ -299,6 +299,14 @@ body {
   color: white;
   border-radius: 8px;
   opacity: 0.5;
+}
+
+.notes-img {
+  width: 15px;
+}
+
+.notes-img-bomb{
+  width: 18px;
 }
 
 .notes-box > div:hover {
