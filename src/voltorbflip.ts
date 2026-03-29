@@ -99,7 +99,10 @@ function startGame() {
       boxes.forEach((box) => box.append(scoreOneNoteImg.cloneNode(true), scoreTwoNoteImg.cloneNode(true), scoreThreeNoteImg.cloneNode(true), scoreBombNoteImg.cloneNode(true)))
   
   //hides the newly issued imgs until ready
-  for (const img of notesBoxOuterImgs) {img.style.visibility = "hidden"};
+  for (const img of notesBoxOuterImgs) {img.style.visibility = "hidden"}
+      
+  
+  //------------------------------------------------------------
 
   //Assigning the max available scores for each row and column below so the player can see where and how to avoid Voltorb booms
   //Rows
@@ -332,6 +335,8 @@ boxes[i].addEventListener("click", () => {
         boxes.forEach((el : any) => el.disabled = true);
         nextLevelBtn.disabled = false;
         currentLevelPoints = 0;
+        
+        for (const img of notesBoxOuterImgs)            {img.style.visibility = "hidden"}
         
          //This will put a voltorb in each remaining slot to show how many the player successfully dodges on a win.
           boxes.forEach((box : any) => {
